@@ -1,0 +1,8 @@
+icon: https://img.icons8.com/plasticine/100/000000/trash--v1.png
+deploy:
+  - okteto build -t okteto.dev/server:${OKTETO_GIT_COMMIT} server
+  - okteto build -t okteto.dev/database:${OKTETO_GIT_COMMIT} database
+  - helm upgrade --install app app --set tag=${OKTETO_GIT_COMMIT}
+devs:
+  - server/okteto.yml
+  - database/okteto.yml

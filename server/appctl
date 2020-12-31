@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -e
+
+APP_ROOT="/app"
+
+case $1 in
+  "")
+    printf "App Controll v1.0.0\n"
+  	printf "OS: %s\n" "$(uname -a)"
+  	printf "Hostname: %s\n" "$(hostname)"
+    printf "Root: %s\n" "${APP_ROOT}"
+    ;;
+
+  "shell")
+  	printf "Starting shell ...\n"
+    bash
+    ;;
+
+  "migrate")
+    $0
+    printf "Starting migrate ...\n"
+    if [ ! -f "${APP_ROOT}/index.php" ]; then
+    	printf "<?php\nphpinfo();\n" > "${APP_ROOT}/index.php"
+    fi
+    ;;
+
+  "start")
+    printf "Starting service ...\n"
+    service ssh start
+    service nginx start
+    service php7.4-fpm start
+    ;;
+
+  "run")
+  	$0 start
+  	printf "Starting application ...\n"
+    tail -f /var/log/nginx/access.log 
+    ;;
+
+  *)
+    echo "Unknown command $1"
+    ;;
+esac

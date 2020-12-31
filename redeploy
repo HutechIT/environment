@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+git add .
+git commit --amend --reuse-message=HEAD
+git push -f
+./deploy

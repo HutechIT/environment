@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+okteto pipeline deploy -p app -r $(git remote get-url public) -w

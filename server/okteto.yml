@@ -1,0 +1,5 @@
+name: server
+forward:
+  - 80:80
+sync:
+  - .:/src

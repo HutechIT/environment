@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+okteto pipeline destroy -p app -w

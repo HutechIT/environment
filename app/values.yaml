@@ -1,0 +1,14 @@
+tag: dev
+
+server:
+  replicaCount: 1
+  image: okteto.dev/server
+
+database:
+  replicaCount: 1
+  image: okteto.dev/database
+  host: "database"
+  root_password: "root"
+  username: "admin"
+  password: "admin"
+  database: "main"

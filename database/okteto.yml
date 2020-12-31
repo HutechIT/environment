@@ -1,0 +1,5 @@
+name: database
+forward:
+  - 3306:3306
+sync:
+  - .:/src
